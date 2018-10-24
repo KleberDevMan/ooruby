@@ -25,7 +25,8 @@ class Estoque
     end
     # diz se existe um metodo
     def respond_to?(name)
-        name.to_s.match "(.+)_que_mais_vendeu_por_(.+)" || super 
+        matcher = name.to_s.match "(.+)_que_mais_vendeu_por_(.+)" || super 
+        !!(matcher) || super
     end
 
 
@@ -83,7 +84,7 @@ class Estoque
     
     # reorganiza o array de livro e retorna o ultimo
     def que_mais_vendeu_por(tipo, &campo)
-        @vendas.select {|l| l.tipo == tipo}.sort {|produto1,produto2|
+        @vendas.select {|produto| produto.matches?(tipo)}.sort {|produto1,produto2|
             quantidade_de_vendas_por(produto1, &campo) <=> 
                 quantidade_de_vendas_por(produto2, &campo)}.last
     end

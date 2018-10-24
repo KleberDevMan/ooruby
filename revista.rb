@@ -1,9 +1,9 @@
 require_relative "string_override"
 
-class Livro
-    attr_reader :titulo, :preco, :possui_reimpressao, :ano_lancamento, :editora
+class Revista
+    attr_reader :titulo, :preco, :ano_lancamento, :editora
     
-    def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, possui_sobrecapa)
+    def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, numero)
         c = ConversorString.new
 
         @titulo = c.string_para_alfanumerico(titulo)
@@ -11,13 +11,14 @@ class Livro
         @possui_reimpressao =  possui_reimpressao 
         @preco = calcula_preco(preco)
         @editora = editora
-        @possui_sobrecapa = possui_sobrecapa
-
+        @numero = numero
+        
     end
 
     def matches?(query)
-        ["livro","impresso"].include?(query)
+        ["revista","impresso"].include?(query)
     end
+
 
     def possui_reimpressao?
         @possui_reimpressao

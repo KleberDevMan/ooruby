@@ -1,18 +1,20 @@
 require_relative "livro"
+require_relative "revista"
+require_relative "ebook"
 require_relative "float_override"
 require_relative "estoque"
 
  # livros
- livro_algoritmos = Livro.new("Algoritmos", 100, 1998, true, "", "livro")
- livro_arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true, "", "livro")
- livro_programmer = Livro.new("The Pragramtic Programmer", 100, 1999, true, "", "livro")
- livro_ruby = Livro.new("Programming Ruby", 100, 2004, true, "", "livro")
+ livro_algoritmos = Livro.new("Algoritmos", 100, 1998, true, "editora livro", true)
+ livro_arquitetura = Livro.new("Introdução a Arquitetura e Design de Software", 70, 2011, true, "editora livro", true)
+ livro_programmer = Livro.new("The Pragramtic Programmer", 100, 1999, true, "editora livro", true)
+ livro_ruby = Livro.new("Programming Ruby", 100, 2004, true, "editora livro", false)
 
  # revistas
- revistona = Livro.new("Revista de Ruby", 10, 2012, true, "Revista", "revista")
+ revistona = Revista.new("Revista de Ruby", 10, 2012, true, "editora revista", 3)
 
  # e-book
- ebook_arquitetura = Livro.new("Revista de Ruby", 10, 2012, true, "", "ebook")
+ ebook_arquitetura = EBook.new("Revista de Ruby", 10, 2012, "editora ebook")
  
  estoque = Estoque.new
  estoque << livro_algoritmos << livro_algoritmos << livro_ruby << livro_programmer << livro_arquitetura << livro_ruby << livro_ruby << revistona << revistona << ebook_arquitetura
