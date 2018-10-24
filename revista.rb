@@ -1,29 +1,22 @@
 require_relative "string_override"
 require_relative "produto"
+require_relative "impresso"
 
-class Revista
-    
-    include Produto
+class Revista < Produto
 
-    def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, numero)
-        c = ConversorString.new
+    include Impresso
 
-        @titulo = c.string_para_alfanumerico(titulo)
-        @ano_lancamento = ano_lancamento
+    def initialize(titulo, preco, ano_lancamento, editora, possui_reimpressao, numero)
+        
+        super(titulo, preco, ano_lancamento, editora)
+
         @possui_reimpressao =  possui_reimpressao 
-        @preco = calcula_preco(preco)
-        @editora = editora
         @numero = numero
         
     end
 
     def matches?(query)
         ["revista","impresso"].include?(query)
-    end
-
-
-    def possui_reimpressao?
-        @possui_reimpressao
     end
     
 end

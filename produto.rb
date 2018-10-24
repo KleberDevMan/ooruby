@@ -1,7 +1,17 @@
-module Produto
+class Produto
 
     attr_reader :titulo, :preco, :ano_lancamento, :editora
 
+    def initialize(titulo, preco, ano_lancamento, editora)
+        c = ConversorString.new
+        
+        @titulo = c.string_para_alfanumerico(titulo)
+        @ano_lancamento = ano_lancamento
+        @preco = calcula_preco(preco)
+        @editora = editora
+        
+    end
+    
     def to_csv
         "#{@titulo}, - Data: #{@ano_lancamento} - R$ #{@preco}"
     end
