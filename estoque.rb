@@ -75,8 +75,8 @@ class Estoque
 
 
 
-    private
 
+    private
     # conta a quantidade de ocorrencia de uma valor em um array de string
     def quantidade_de_vendas_por(produto, &campo)
         @vendas.count {|venda| campo.call(venda) == campo.call(produto)} 
@@ -88,4 +88,5 @@ class Estoque
             quantidade_de_vendas_por(produto1, &campo) <=> 
                 quantidade_de_vendas_por(produto2, &campo)}.last
     end
+
 end

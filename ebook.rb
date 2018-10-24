@@ -1,8 +1,10 @@
 require_relative "string_override"
+require_relative "produto"
 
 class EBook
-    attr_reader :titulo, :preco, :ano_lancamento, :editora
     
+    include Produto
+
     def initialize(titulo, preco, ano_lancamento, editora)
         c = ConversorString.new
 
@@ -17,20 +19,4 @@ class EBook
         ["ebook","digital"].include?(query)
     end
 
-    def to_csv
-        "#{@titulo}, - Data: #{@ano_lancamento} - R$ #{@preco}"
-    end
-
-    private
-    def calcula_preco(base)
-        if @ano_lancamento < 2016
-            base * 0.95
-        else
-            if @ano_lancamento <= 2010
-                base * 0.95
-            else
-                base
-            end
-        end
-    end
 end
